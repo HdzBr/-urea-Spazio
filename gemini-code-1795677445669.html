@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Áurea Spazio | Where design, meets execution.</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            sage: {
+              DEFAULT: '#547658',
+              dark: '#3E5941',
+              light: '#6D8F71',
+              muted: '#E6ECE6'
+            },
+            stonebase: {
+              DEFAULT: '#F4F5F3',
+              card: '#ECEEEB',
+              border: '#DCE0DA'
+            },
+            charcoal: '#232824'
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            serif: ['"Cormorant Garamond"', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #F4F5F3;
+      color: #232824;
+    }
+    .hero-arch-stroke {
+      stroke: #547658;
+      fill: none;
+    }
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(6px); }
+    }
+    .scroll-cue {
+      animation: floatSlow 2.4s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-sage selection:text-white">
+
+  <!-- Barra de navegación fija (aparece tras hacer scroll en la portada) -->
+  <header id="main-navbar" class="fixed top-0 left-0 right-0 z-40 bg-[#F4F5F3]/95 backdrop-blur-md border-b border-stonebase-border opacity-0 pointer-events-none -translate-y-3 transition-all duration-500">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 h-20 flex items-center justify-between">
+      <a href="#splash" class="flex items-center gap-3.5 group" aria-label="Áurea Spazio Inicio">
+        <svg class="w-10 h-10 shrink-0 transition-transform duration-300 group-hover:scale-105" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="4" width="92" height="92" class="hero-arch-stroke" stroke-width="5.5" />
+          <path d="M 14 96 L 14 50 A 36 36 0 0 1 86 50 L 86 96" class="hero-arch-stroke" stroke-width="5.5" />
+          <path d="M 14 96 A 36 36 0 0 1 86 96" class="hero-arch-stroke" stroke-width="5.5" />
+        </svg>
+        <div class="flex flex-col leading-none">
+          <span class="text-xl sm:text-2xl font-semibold tracking-[0.14em] text-sage">ÁUREA</span>
+          <span class="text-[10px] sm:text-xs font-normal tracking-[0.54em] text-sage mt-1 pl-0.5">SPAZIO</span>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-charcoal/80">
+        <a href="#nosotros" class="hover:text-sage transition-colors">Nosotros</a>
+        <a href="#productos" class="hover:text-sage transition-colors">Recubrimientos</a>
+        <a href="#proyectos" class="hover:text-sage transition-colors">Proyectos</a>
+        <a href="#cotizar" class="hover:text-sage transition-colors">Cotizador</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a href="https://wa.me/5218120640098?text=Hola%20%C3%81urea%20Spazio,%20me%20gustar%C3%ADa%20solicitar%20informaci%C3%B3n%20y%20cotizaci%C3%B3n%20de%20sus%20recubrimientos." target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center gap-2 bg-sage hover:bg-sage-dark text-white text-xs sm:text-sm font-medium px-4 py-2.5 rounded-sm transition-colors">
+          <span>Cotizar</span>
+        </a>
+        <button id="menu-btn" class="md:hidden p-2 text-charcoal hover:text-sage" aria-label="Abrir menú">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menú móvil -->
+    <div id="mobile-menu" class="hidden md:hidden bg-[#F4F5F3] border-b border-stonebase-border px-6 py-4 space-y-3 text-sm">
+      <a href="#nosotros" class="block py-1.5 text-charcoal/90 hover:text-sage">Nosotros</a>
+      <a href="#productos" class="block py-1.5 text-charcoal/90 hover:text-sage">Recubrimientos</a>
+      <a href="#proyectos" class="block py-1.5 text-charcoal/90 hover:text-sage">Proyectos Realizados</a>
+      <a href="#cotizar" class="block py-1.5 text-charcoal/90 hover:text-sage">Cotizador Rápido</a>
+    </div>
+  </header>
+
+  <!-- Pantalla Inicial (Splash con Logo que transiciona al hacer scroll) -->
+  <section id="splash" class="relative h-screen w-full flex flex-col items-center justify-center bg-[#F4F5F3] px-6 overflow-hidden select-none">
+    <div id="splash-logo-wrap" class="flex flex-col items-center text-center transition-all duration-300 ease-out">
+      <div class="flex flex-col sm:flex-row items-center gap-5 sm:gap-7">
+        <svg class="w-24 h-24 sm:w-32 sm:h-32 shrink-0" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="4" width="92" height="92" class="hero-arch-stroke" stroke-width="4.5" />
+          <path d="M 14 96 L 14 50 A 36 36 0 0 1 86 50 L 86 96" class="hero-arch-stroke" stroke-width="4.5" />
+          <path d="M 14 96 A 36 36 0 0 1 86 96" class="hero-arch-stroke" stroke-width="4.5" />
+        </svg>
+        <div class="flex flex-col items-center sm:items-start leading-none">
+          <span class="text-4xl sm:text-6xl md:text-7xl font-semibold tracking-[0.14em] text-sage">ÁUREA</span>
+          <span class="text-sm sm:text-xl md:text-2xl font-normal tracking-[0.58em] text-sage mt-2 sm:mt-3 sm:pl-1">SPAZIO</span>
+        </div>
+      </div>
+      <div class="w-14 h-px bg-sage/35 my-7"></div>
+      <p class="font-serif italic text-lg sm:text-2xl text-charcoal/70 tracking-wide">
+        Where design, meets execution.
+      </p>
+    </div>
+
+    <a href="#inicio" id="splash-cue" class="scroll-cue absolute bottom-10 flex flex-col items-center gap-2 text-[11px] uppercase tracking-[0.25em] text-sage/80 hover:text-sage transition-colors">
+      <span>Desliza para explorar</span>
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M19 9l-7 7-7-7" />
+      </svg>
+    </a>
+  </section>
+
+  <!-- Contenido Principal (se revela suavemente al hacer scroll) -->
+  <div id="main-content" class="opacity-0 translate-y-6 transition-all duration-700 ease-out">
+
+    <!-- Hero Principal con foto real de obra (foto6) -->
+    <section id="inicio" class="relative min-h-[82vh] flex items-center pt-24 pb-16 overflow-hidden">
+      <div class="absolute inset-0 z-0">
+        <img src="foto6"
+             alt="Plafón arquitectónico de Lambrín WPC tono madera natural con iluminación empotrada"
+             class="w-full h-full object-cover object-center" />
+        <div class="absolute inset-0 bg-gradient-to-r from-[#232824]/85 via-[#232824]/60 to-[#232824]/25"></div>
+      </div>
+
+      <div class="relative z-10 max-w-6xl mx-auto px-5 sm:px-8 w-full">
+        <div class="max-w-2xl text-white">
+          <p class="text-xs uppercase tracking-[0.28em] text-white/80 mb-4">Monterrey • Interior y Exterior</p>
+          <h1 class="text-3xl sm:text-5xl md:text-[3.25rem] font-light leading-[1.15] tracking-tight mb-6">
+            Recubrimientos sintéticos con acabado arquitectónico.
+          </h1>
+          <p class="text-base sm:text-lg text-white/85 font-light leading-relaxed mb-8 max-w-xl">
+            Diseño contemporáneo, asesoría técnica e instalación profesional para residencias en Monterrey y su área metropolitana.
+          </p>
+          <div class="flex flex-wrap items-center gap-4">
+            <a href="https://wa.me/5218120640098?text=Hola%20%C3%81urea%20Spazio,%20quiero%20cotizar%20un%20proyecto%20residencial." target="_blank" rel="noopener noreferrer"
+               class="bg-sage hover:bg-sage-dark text-white text-sm font-medium px-6 py-3.5 rounded-sm transition-colors">
+              Solicitar Cotización
+            </a>
+            <a href="#productos"
+               class="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white text-sm font-medium px-6 py-3.5 rounded-sm transition-colors">
+              Explorar Catálogo
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección Nosotros / Manifiesto oficial -->
+    <section id="nosotros" class="py-20 sm:py-28 border-b border-stonebase-border">
+      <div class="max-w-6xl mx-auto px-5 sm:px-8">
+        <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          <div class="lg:col-span-5">
+            <p class="text-xs uppercase tracking-[0.26em] text-sage font-medium mb-3">Nuestra Filosofía</p>
+            <h2 class="text-2xl sm:text-4xl font-light text-charcoal leading-snug mb-6">
+              Transformamos ideas arquitectónicas en espacios que perduran.
+            </h2>
+            <div class="w-16 h-0.5 bg-sage/60"></div>
+          </div>
+
+          <div class="lg:col-span-7 space-y-5 text-charcoal/85 text-base sm:text-[17px] leading-relaxed font-light">
+            <p>
+              Todo gran proyecto comienza con una idea: transformar un espacio en un lugar único.
+            </p>
+            <p>
+              En <strong class="font-medium text-charcoal">Áurea Spazio</strong> nos inspira la posibilidad de convertir esas ideas en realidad, a través de materiales innovadores, diseños contemporáneos y acabados que marcan la diferencia.
+            </p>
+            <p>
+              Cada muro, cada terraza y cada detalle representa una oportunidad para crear algo especial. Trabajamos con el compromiso de ofrecer calidad, asesoría e instalación profesional, porque sabemos que detrás de cada proyecto existe una visión que merece hacerse realidad.
+            </p>
+            <div class="pt-4 border-t border-stonebase-border flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div>
+                <p class="font-serif italic text-2xl text-sage">“Where design, meets execution.”</p>
+                <p class="text-xs uppercase tracking-[0.2em] text-charcoal/60 mt-1">— Áurea Spazio • Monterrey, N.L.</p>
+              </div>
+              <a href="https://www.instagram.com/aureaspazio/" target="_blank" rel="noopener noreferrer"
+                 class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.16em] text-sage hover:text-sage-dark font-medium">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+                <span>@aureaspazio</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pilares de valor -->
+        <div class="grid md:grid-cols-3 gap-6 mt-16">
+          <div class="bg-stonebase-card p-7 border border-stonebase-border">
+            <span class="text-xs font-medium tracking-widest text-sage uppercase">01</span>
+            <h3 class="text-lg font-medium text-charcoal mt-2 mb-2">Asesoría Personalizada</h3>
+            <p class="text-sm text-charcoal/75 leading-relaxed font-light">
+              Te orientamos en la selección de texturas, tonos y especificaciones técnicas ideales para cada área interior o exterior de tu residencia.
+            </p>
+          </div>
+          <div class="bg-stonebase-card p-7 border border-stonebase-border">
+            <span class="text-xs font-medium tracking-widest text-sage uppercase">02</span>
+            <h3 class="text-lg font-medium text-charcoal mt-2 mb-2">Materiales de Alta Durabilidad</h3>
+            <p class="text-sm text-charcoal/75 leading-relaxed font-light">
+              Recubrimientos sintéticos resistentes al clima extremo, humedad y radiación solar, con estética natural y mínimo mantenimiento.
+            </p>
+          </div>
+          <div class="bg-stonebase-card p-7 border border-stonebase-border">
+            <span class="text-xs font-medium tracking-widest text-sage uppercase">03</span>
+            <h3 class="text-lg font-medium text-charcoal mt-2 mb-2">Instalación Profesional</h3>
+            <p class="text-sm text-charcoal/75 leading-relaxed font-light">
+              Ejecución limpia, precisa y garantizada por especialistas para lograr uniones imperceptibles y acabados residenciales impecables.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Catálogo de Productos / Servicios -->
+    <section id="productos" class="py-20 sm:py-28 border-b border-stonebase-border">
+      <div class="max-w-6xl mx-auto px-5 sm:px-8">
+        <div class="max-w-2xl mb-14">
+          <p class="text-xs uppercase tracking-[0.26em] text-sage font-medium mb-3">Líneas de Producto</p>
+          <h2 class="text-2xl sm:text-4xl font-light text-charcoal leading-snug mb-4">
+            Recubrimientos Sintéticos Residenciales
+          </h2>
+          <p class="text-charcoal/75 font-light text-base">
+            Soluciones arquitectónicas para interior y exterior con asesoría técnica y suministro e instalación directa.
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
+          <!-- 1. Lambrín WPC -->
+          <article class="group bg-white border border-stonebase-border flex flex-col justify-between transition-all hover:border-sage/50">
+            <div>
+              <div class="aspect-[4/3] overflow-hidden bg-stonebase-card">
+                <img src="foto6"
+                     alt="Plafón arquitectónico de Lambrín WPC tono madera natural con iluminación empotrada"
+                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              </div>
+              <div class="p-6">
+                <span class="text-[11px] uppercase tracking-[0.2em] text-sage font-medium">Interior / Exterior</span>
+                <h3 class="text-xl font-medium text-charcoal mt-1.5 mb-2.5">Lambrín WPC</h3>
+                <p class="text-sm text-charcoal/75 font-light leading-relaxed">
+                  Perfiles arquitectónicos acanalados con acabado cálido tipo madera natural para muros de acento, plafones y fachadas sin necesidad de barniz ni mantenimiento.
+                </p>
+              </div>
+            </div>
+            <div class="px-6 pb-6 pt-2">
+              <a href="https://wa.me/5218120640098?text=Hola%20%C3%81urea%20Spazio,%20me%20interesa%20cotizar%20Lambr%C3%ADn%20WPC." target="_blank" rel="noopener noreferrer"
+                 class="inline-flex items-center justify-between w-full text-xs uppercase tracking-[0.16em] font-medium text-sage hover:text-sage-dark border-t border-stonebase-border pt-4">
+                <span>Cotizar este material</span>
+                <span>→</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- 2. Deck WPC -->
+          <article class="group bg-white border border-stonebase-border flex flex-col justify-between transition-all hover:border-sage/50">
+            <div>
+              <div class="aspect-[4/3] overflow-hidden bg-stonebase-card">
+                <img src="foto2"
+                     alt="Volado exterior en concreto aparente con recubrimiento Deck WPC oscuro"
+                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              </div>
+              <div class="p-6">
+                <span class="text-[11px] uppercase tracking-[0.2em] text-sage font-medium">Exterior</span>
+                <h3 class="text-xl font-medium text-charcoal mt-1.5 mb-2.5">Deck WPC</h3>
+                <p class="text-sm text-charcoal/75 font-light leading-relaxed">
+                  Revestimientos y plataformas exteriores de alta resistencia al sol, humedad e insectos. Ideal para terrazas, volados, alrededores de alberca y áreas sociales.
